@@ -45,6 +45,7 @@ extension TaskStore {
             let id = UUID().hashValue
             refDB.id = id
             refDB.task = task
+            refDB.isDone = false
             
             try realm.write {
                 realm.add(refDB)
@@ -52,6 +53,31 @@ extension TaskStore {
         } catch let error {
             // Handle error
             print(error.localizedDescription)
+        }
+    }
+    
+    func update(taskID: Int, task: String, isDone: Bool) {
+        // TODO: Add Realm update code below
+        objectWillChange.send()
+        
+        let task = self.findByID(id: taskID)!
+                
+        do {
+            let realm = try Realm()
+            
+            try realm.write {
+                let updatedTask = TaskDB()
+                
+                
+                updatedTask.id     = task.id
+                updatedTask.task   = task.task
+                updatedTask.isDone = isDone
+                
+                realm.add(updatedTask, update: .modified)
+            }
+            
+        } catch let err {
+            print(err.localizedDescription)
         }
     }
     

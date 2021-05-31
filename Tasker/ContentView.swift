@@ -18,7 +18,7 @@ struct ContentView: View {
             Section {
                 List{
                     ForEach(taskStore.tasks, id: \.id) { task in
-                        Text(task.task)
+                        TaskItem(task: task)
                     }.onDelete(perform: self.delete)
                 }
                 .listStyle(InsetGroupedListStyle())
@@ -48,14 +48,20 @@ struct CreateTaskSheet: View {
     @State var taskName : String = ""
 
     var body: some View {
-        Form {
-            VStack(spacing: 20) {
-                TextField("Enter your new Task", text: $taskName)
+        NavigationView {
+            Form {
+                VStack(spacing: 20) {
+                    TextField("Enter your new Task", text: $taskName)
+                }
+                Button("Create new Task") {
+                    taskStore.create(task: taskName)
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
-            Button("Create new Task") {
-                taskStore.create(task: taskName)
+            .navigationBarTitle(Text("New Task"))
+            .navigationBarItems(trailing: Button("Cancel") {
                 presentationMode.wrappedValue.dismiss()
-            }
+            })
         }
         
         

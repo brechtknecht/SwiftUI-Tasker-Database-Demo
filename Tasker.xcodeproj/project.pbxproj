@@ -16,6 +16,7 @@
 		99B3D1D1265CEC62008239CE /* RealmPersistentInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3D1D0265CEC62008239CE /* RealmPersistentInitializer.swift */; };
 		99B3D1D6265CED20008239CE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3D1D5265CED20008239CE /* Task.swift */; };
 		99B3D1DB265CEE60008239CE /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3D1DA265CEE60008239CE /* TaskStore.swift */; };
+		99C6F4352664D3F400534CA6 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C6F4342664D3F400534CA6 /* TaskItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		99B3D1D0265CEC62008239CE /* RealmPersistentInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistentInitializer.swift; sourceTree = "<group>"; };
 		99B3D1D5265CED20008239CE /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		99B3D1DA265CEE60008239CE /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
+		99C6F4342664D3F400534CA6 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskItem.swift; path = ../../../Tasker/Tasker/TaskItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		99B3D1B7265CE365008239CE /* Tasker */ = {
 			isa = PBXGroup;
 			children = (
+				99C6F4332664D3E600534CA6 /* components */,
 				99B3D1D9265CEE52008239CE /* stores */,
 				99B3D1D3265CED08008239CE /* models */,
 				99B3D1CE265CEC4B008239CE /* realm */,
@@ -104,6 +107,14 @@
 				99B3D1DA265CEE60008239CE /* TaskStore.swift */,
 			);
 			path = stores;
+			sourceTree = "<group>";
+		};
+		99C6F4332664D3E600534CA6 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				99C6F4342664D3F400534CA6 /* TaskItem.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99B3D1DB265CEE60008239CE /* TaskStore.swift in Sources */,
+				99C6F4352664D3F400534CA6 /* TaskItem.swift in Sources */,
 				99B3D1D6265CED20008239CE /* Task.swift in Sources */,
 				99B3D1BB265CE365008239CE /* ContentView.swift in Sources */,
 				99B3D1D1265CEC62008239CE /* RealmPersistentInitializer.swift in Sources */,
