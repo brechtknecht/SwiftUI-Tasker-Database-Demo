@@ -56,11 +56,11 @@ extension TaskStore {
         }
     }
     
-    func update(taskID: Int, task: String, isDone: Bool) {
+    func update(taskID: Int, text: String? = nil, isDone: Bool? = nil) {
         // TODO: Add Realm update code below
         objectWillChange.send()
         
-        let task = self.findByID(id: taskID)!
+        let previousTask = self.findByID(id: taskID)!
                 
         do {
             let realm = try Realm()
@@ -68,10 +68,21 @@ extension TaskStore {
             try realm.write {
                 let updatedTask = TaskDB()
                 
+                updatedTask.id     = taskID
                 
-                updatedTask.id     = task.id
-                updatedTask.task   = task.task
-                updatedTask.isDone = isDone
+                if(text == nil) {
+                    updatedTask.task = previousTask.task
+                } else {
+                    updatedTask.task = text!
+                }
+                
+                if(isDone == nil) {
+                    updatedTask.isDone = previousTask.isDone
+                } else {
+                    updatedTask.isDone = isDone!
+                }
+                
+                updatedTask.isDone = isDone ?? false
                 
                 realm.add(updatedTask, update: .modified)
             }
