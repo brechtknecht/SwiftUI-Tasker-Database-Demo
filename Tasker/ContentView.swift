@@ -24,8 +24,8 @@ struct ContentView: View {
                 .listStyle(InsetGroupedListStyle())
             }
             .navigationBarTitle(Text("Tasker"))
-            .navigationBarItems(
-                trailing: Button("Add Task") {
+            .navigationBarItems(trailing:
+                Button("Add Task") {
                     showingSheet.toggle()
                 }
             )

@@ -11,16 +11,24 @@ import RealmSwift
 final class TaskStore: ObservableObject {
     private var results: Results<TaskDB>
     
+    // Das ist die Variable mit der wir im Interface auf alle Tasks Zugreifen können
+    // Dafür muss der Property Wrapper:
+    /// @EnvironmentObject var taskStore : TaskStore
+    // eingebunden werden
+    
     var tasks: [Task] {
         results.map(Task.init)
     }
     
-    // Load Items from the Realm Database
+    // Initialisiert die Realm Datenbank
+    // Wird in ContentView.swift aufgerufen und ist
+    // dann global als @Environment Object aufrufbar
     init(realm: Realm) {
         results = realm.objects(TaskDB.self)
     }
     
-    
+    // Findet einen bestimmten Task
+    // Dafür wird nur die ID des Tasks benötigt
     func findByID (id: Int) -> TaskDB! {
         do {
             return try Realm().object(ofType: TaskDB.self, forPrimaryKey: id)
@@ -33,6 +41,9 @@ final class TaskStore: ObservableObject {
 
 // MARK: - CRUD Actions
 extension TaskStore {
+    
+    // Erstellt einen neuen Task mit einem angegebenen Namen
+    // Per default wird der isDone Bool auf false gesetzt
     func create(task: String) {
         
         objectWillChange.send()
@@ -56,6 +67,11 @@ extension TaskStore {
         }
     }
     
+    
+    // Updated eine gegebene Task. Dafür wird die ID benötigt,
+    // welche in der Datenbank danach sucht und dann nach den mitgegebenen
+    // Parametern aktualisiert.
+    /// text und isDone sind hierbei optional
     func update(taskID: Int, text: String? = nil, isDone: Bool? = nil) {
         // TODO: Add Realm update code below
         objectWillChange.send()
@@ -67,7 +83,6 @@ extension TaskStore {
             
             try realm.write {
                 let updatedTask = TaskDB()
-                
                 updatedTask.id     = taskID
                 
                 if(text == nil) {
