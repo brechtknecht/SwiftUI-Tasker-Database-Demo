@@ -12,6 +12,7 @@ struct TaskerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(TaskStore(realm: RealmPersistent.initializer()))
         }
     }
 }

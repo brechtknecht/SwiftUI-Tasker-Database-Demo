@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,11 @@
 		99B3D1BB265CE365008239CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3D1BA265CE365008239CE /* ContentView.swift */; };
 		99B3D1BD265CE366008239CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99B3D1BC265CE366008239CE /* Assets.xcassets */; };
 		99B3D1C0265CE366008239CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99B3D1BF265CE366008239CE /* Preview Assets.xcassets */; };
+		99B3D1CA265CEC3C008239CE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 99B3D1C9265CEC3C008239CE /* Realm */; };
+		99B3D1CC265CEC3C008239CE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 99B3D1CB265CEC3C008239CE /* RealmSwift */; };
+		99B3D1D1265CEC62008239CE /* RealmPersistentInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3D1D0265CEC62008239CE /* RealmPersistentInitializer.swift */; };
+		99B3D1D6265CED20008239CE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3D1D5265CED20008239CE /* Task.swift */; };
+		99B3D1DB265CEE60008239CE /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B3D1DA265CEE60008239CE /* TaskStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,9 @@
 		99B3D1BC265CE366008239CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99B3D1BF265CE366008239CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		99B3D1C1265CE366008239CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99B3D1D0265CEC62008239CE /* RealmPersistentInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistentInitializer.swift; sourceTree = "<group>"; };
+		99B3D1D5265CED20008239CE /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		99B3D1DA265CEE60008239CE /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +35,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B3D1CC265CEC3C008239CE /* RealmSwift in Frameworks */,
+				99B3D1CA265CEC3C008239CE /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +62,9 @@
 		99B3D1B7265CE365008239CE /* Tasker */ = {
 			isa = PBXGroup;
 			children = (
+				99B3D1D9265CEE52008239CE /* stores */,
+				99B3D1D3265CED08008239CE /* models */,
+				99B3D1CE265CEC4B008239CE /* realm */,
 				99B3D1B8265CE365008239CE /* TaskerApp.swift */,
 				99B3D1BA265CE365008239CE /* ContentView.swift */,
 				99B3D1BC265CE366008239CE /* Assets.xcassets */,
@@ -67,6 +80,30 @@
 				99B3D1BF265CE366008239CE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		99B3D1CE265CEC4B008239CE /* realm */ = {
+			isa = PBXGroup;
+			children = (
+				99B3D1D0265CEC62008239CE /* RealmPersistentInitializer.swift */,
+			);
+			path = realm;
+			sourceTree = "<group>";
+		};
+		99B3D1D3265CED08008239CE /* models */ = {
+			isa = PBXGroup;
+			children = (
+				99B3D1D5265CED20008239CE /* Task.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		99B3D1D9265CEE52008239CE /* stores */ = {
+			isa = PBXGroup;
+			children = (
+				99B3D1DA265CEE60008239CE /* TaskStore.swift */,
+			);
+			path = stores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +122,10 @@
 			dependencies = (
 			);
 			name = Tasker;
+			packageProductDependencies = (
+				99B3D1C9265CEC3C008239CE /* Realm */,
+				99B3D1CB265CEC3C008239CE /* RealmSwift */,
+			);
 			productName = Tasker;
 			productReference = 99B3D1B5265CE365008239CE /* Tasker.app */;
 			productType = "com.apple.product-type.application";
@@ -112,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 99B3D1AC265CE365008239CE;
+			packageReferences = (
+				99B3D1C8265CEC3C008239CE /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 99B3D1B6265CE365008239CE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +182,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B3D1DB265CEE60008239CE /* TaskStore.swift in Sources */,
+				99B3D1D6265CED20008239CE /* Task.swift in Sources */,
 				99B3D1BB265CE365008239CE /* ContentView.swift in Sources */,
+				99B3D1D1265CEC62008239CE /* RealmPersistentInitializer.swift in Sources */,
 				99B3D1B9265CE365008239CE /* TaskerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +375,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		99B3D1C8265CEC3C008239CE /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		99B3D1C9265CEC3C008239CE /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99B3D1C8265CEC3C008239CE /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		99B3D1CB265CEC3C008239CE /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99B3D1C8265CEC3C008239CE /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 99B3D1AD265CE365008239CE /* Project object */;
 }
